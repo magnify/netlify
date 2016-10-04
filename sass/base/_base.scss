@@ -1,0 +1,99 @@
+/**
+ * Base
+ *
+ * Contains styling and reset of basic elements
+ *
+ */
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+
+  background-color: $white;
+  color: $black;
+  font: $font;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: .5em;
+
+  font-family: $font-body;
+  font-weight: normal;
+
+  /* This fixes huge spaces when a heading wraps onto two lines */
+  line-height: 1.2;
+
+  /* Voodoo to enable ligatures and kerning */
+  text-rendering: optimizeLegibility;
+}
+
+
+strong {
+  font-weight: bold;
+}
+
+
+em {
+  font-style: italic;
+
+  strong {
+    font-weight: bold;
+  }
+}
+
+
+
+/* Links
+   ================================================================================================================== */
+
+a {
+  transition: color .5s, text-decoration .5s;
+
+  &:link {
+    color: $link-color;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: lighten($link-color, 5%);
+  }
+
+  &:hover {
+    color: $white;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    color: lighten($link-color, 10%);
+  }
+}
+
+
+/* Paragraph
+   ================================================================================================================== */
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* Image
+   ================================================================================================================== */
+
+img {
+  display: inline;
+  height: auto;
+  max-width: 100%;
+  vertical-align: bottom;
+}

@@ -1,0 +1,331 @@
+/* Loader
+   ================================================================================================================== */
+
+@-webkit-keyframes pulsate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(90deg);
+  }
+
+  45% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  70% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(270deg);
+  }
+
+  95% {
+    transform: rotate(270deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader.animate {
+  display: none;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  margin-top: -2.5em;
+  margin-left: -2em;
+
+  color: $white;
+  font-family: $font-header;
+  text-align: center;
+
+  &--logo {
+    @include animation(pulsate 2s ease-out infinite);
+
+    margin-bottom: .5em;
+    max-width: 4em;
+
+    outline: .1em solid transparent;
+  }
+
+  &--text {
+    display: block;
+    padding-left: -.25em;
+  }
+}
+
+
+/* Navigation
+   ================================================================================================================== */
+
+.nav {
+  width: 100%;
+
+  &--inner {
+    padding: 2em 0;
+    max-width: 62.5em;
+    margin-right: auto;
+    margin-left: auto;
+
+    line-height: 3.8em;
+
+    @include breakpoint($breakpoint-bigscreen) {
+      padding: 4em 2em;
+    }
+  }
+
+  &-logo {
+    @include opacity(0);
+    @include transition(opacity .5s ease-in-out);
+
+    margin-right: 1em;
+    max-width: 4em;
+
+    outline: .1em solid transparent;
+
+    &.animate {
+      @include opacity(1);
+      @include transition-delay(.5s);
+    }
+  }
+
+  &-title {
+    @include opacity(0);
+    @include transition(opacity .5s ease-in-out);
+
+    color: $white;
+    font-family: $font-header;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &.animate {
+      @include opacity(1);
+      @include transition-delay(1s);
+    }
+  }
+}
+
+/* main
+   ================================================================================================================== */
+
+.main {
+  @include background-size(cover);
+
+  overflow: scroll;
+
+  box-sizing: border-box;
+  height: 100%;
+  padding: 2em;
+  width: 100%;
+
+  background-image: url('../images/header-background.jpg');
+  color: $white;
+
+  @include breakpoint($breakpoint-lap) {
+    background-position: center;
+  }
+
+  // Header inner
+  &--inner {
+    @include transition(border .5s ease-in-out);
+
+    display: block;
+    margin-right: auto;
+    margin-bottom: 4em;
+    margin-left: auto;
+    max-width: 62.5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 0;
+
+    &.animate {
+      @include transition-delay(1.75s);
+
+      border-bottom: 1px solid transparentize($white, .85);
+    }
+  }
+
+  &--big,
+  &--sub {
+    @include transition(bottom .5s ease-in-out);
+
+    position: relative;
+    bottom: -100em;
+
+    &.animate {
+      bottom: 0;
+    }
+  }
+
+  // Big header
+  &--big {
+    font-family: $font-header;
+    font-size: 2em;
+    font-weight: 600;
+
+    &.animate {
+      @include transition-delay(1.75s);
+    }
+
+    @include breakpoint($breakpoint-lap) {
+      font-size: 3em;
+    }
+
+    @include breakpoint($breakpoint-desk) {
+      position: relative;
+
+      font-size: 3.5em;
+    }
+
+    @include breakpoint($breakpoint-bigscreen) {
+      font-size: 3.8em;
+    }
+
+    // Tweaking for landscape
+    @media screen and (orientation:landscape) and (max-height: 287px) {
+      font-size: 1.5em;
+    }
+  }
+
+  // Sub header
+  &--sub {
+    margin-bottom: 1em;
+
+    font-weight: 300;
+
+    &.animate {
+      @include transition-delay(2.25s);
+    }
+
+    @include breakpoint($breakpoint-lap) {
+      font-size: 1.25em;
+    }
+
+    @include breakpoint($breakpoint-desk) {
+      font-size: 1.5em;
+    }
+
+    @include breakpoint($breakpoint-bigscreen) {
+      font-size: 2em;
+    }
+
+    // Tweaking for landscape
+    @media screen and (orientation:landscape) and (max-height: 287px) {
+      font-size: 1em;
+    }
+  }
+}
+
+
+/* About
+   ================================================================================================================== */
+
+.about {
+  @include flexbox;
+  @include flex-direction(column);
+  @include transition(bottom .75s ease-in-out);
+
+  position: relative;
+  bottom: -100%;
+
+  margin-right: auto;
+  margin-bottom: 4em;
+  margin-left: auto;
+  max-width: 62.5em;
+  padding-bottom: 4em;
+
+  &.animate {
+    @include transition-delay(2.5s);
+
+    bottom: 0;
+
+    border-bottom: 1px solid transparentize($white, .85);
+  }
+
+  &--header {
+    font-family: $font-header;
+    font-size: 1.25em;
+    font-weight: 600;
+  }
+
+  &--now {
+    @include flex-basis(100%);
+
+    font-weight: 100;
+
+    p + p {
+      margin-top: 1em;
+    }
+  }
+}
+
+
+/* Instagram
+   ================================================================================================================== */
+
+.instagram {
+  @include transition(bottom 1s ease-in-out);
+
+  position: relative;
+  bottom: -100em;
+
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 62.5em;
+
+  &.animate {
+    @include transition-delay(3s);
+
+    bottom: 0;
+  }
+
+  &--header {
+    margin-bottom: 1em;
+
+    font-family: $font-header;
+    font-size: 1.25em;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+
+/* Footer
+   ================================================================================================================== */
+
+.footer {
+  @include transition(bottom 1s ease-in-out);
+
+  position: relative;
+  bottom: -100%;
+
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 62.5em;
+  padding: 2em;
+
+  text-align: center;
+
+  &.animate {
+    @include transition-delay(3.25s);
+
+    bottom: 0;
+  }
+}
