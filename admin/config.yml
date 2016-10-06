@@ -1,5 +1,6 @@
 backend:
-  name: github-api
+  name: netlify-api
+  url: localhost:8080
   repo: magnify/netlify # Path to your Github repository
   branch: master # Branch to update (master by default)
 
